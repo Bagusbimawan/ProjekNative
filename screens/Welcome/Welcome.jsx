@@ -13,6 +13,8 @@ const Welcome = ({ navigation }) => {
   const [api, setApi] = useState();
   return (
     <View>
+      <Text>Welcome</Text>
+      <Button title="Klik" onPress={()=>navigation.navigate("Hello")}/>
     </View>
   );
 };

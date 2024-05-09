@@ -8,6 +8,7 @@ import AcountScreen from "./screens/Acount/Acount.jsx"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./screens/Home/Home.jsx"
 import SocialScreen from "./screens/SocialMedia/Social.jsx"
+import MainScreen from "./screens/main/Main.jsx"
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -25,10 +26,11 @@ export default function App() {
     <>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Welcome" component={HomeTabs}  />
+          <Stack.Screen name="Welcome" component={WelcomeScreen}  />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Social" component={SocialScreen}/>
-        </Stack.Navigator> 
+          <Stack.Screen name="Hello" component={HomeTabs}/>
+        </Stack.Navigator>  
       </NavigationContainer>
     </>
   );
