@@ -6,7 +6,9 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from "react-native";
+
 import React, { useState } from "react";
 import Myimage from "../Login/assets/course.png";
 import { Button } from "react-native-paper";
@@ -20,24 +22,39 @@ const Login = () => {
 
   const OnLogin = () => {
     const IsFound = users.find(
-      (e) => e.nama === InputNama.current && e.password === InputPassword
+      (e) =>
+        e.nama === InputNama.current && e.password === InputPassword.current
     );
+    if(!IsFound){
+      Alert.alert("gagal","user Tidak ditemukan",[{text:"Ok"}])
+      return;
+    }
     login()
   };
+
   return (
     <>
-      <ScrollView>
+      <ScrollView
+       keyboardShouldPersistTaps="handled"
+       >
         <View>
           <Text style={style.text1}>Sign-in</Text>
           <Image source={Myimage} style={style.image} />
         </View>
         <View>
           <Text style={style.text2}>Email/Phone Number</Text>
-          <TextInput style={style.input} />
+          <TextInput
+            style={style.input}
+            onChangeText={(text) => (InputNama.current = text)}
+          />
         </View>
         <View>
           <Text style={style.text2}>Password</Text>
-          <TextInput style={style.input} secureTextEntry />
+          <TextInput
+            style={style.input}
+            secureTextEntry
+            onChangeText={(text) => (InputPassword.current = text)}
+          />
         </View>
         <View>
           <TouchableOpacity>
